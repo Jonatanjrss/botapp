@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [ "Ubuntu", "Windows"]
+        target: [ "Ubuntu", "Android"]
         include:
           - target: "Ubuntu"
             platform: "linux"
@@ -30,10 +30,11 @@ jobs:
             runs-on: "ubuntu-latest"
             briefcase-args: "--target ubuntu:24.04"          
 
-          - target: "Windows"
-            platform: "windows"
-            output-format: "app"
-            runs-on: "windows-latest"
+          - target: "Android"
+            platform: "android"
+            output-format: "apk"
+            runs-on: "ubuntu-latest"
+            briefcase-args: "--target android"
 
     steps:
       - name: Checkout
@@ -86,3 +87,6 @@ jobs:
           body_path: CHANGELOG
           files: |
             dist/*
+
+
+            
