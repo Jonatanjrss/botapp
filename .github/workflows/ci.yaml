@@ -24,49 +24,16 @@ jobs:
       matrix:
         target: [ "Ubuntu", "Windows"]
         include:
-          - target: "AppImage"
-            platform: "linux"
-            output-format: "appimage"
-            runs-on: "ubuntu-latest"
-
-          - target: "Flatpak"
-            platform: "linux"
-            output-format: "flatpak"
-            runs-on: "ubuntu-latest"
-
-          - target: "Archlinux"
-            platform: "linux"
-            output-format: "system"
-            runs-on: "ubuntu-latest"
-            briefcase-args: "--target archlinux"
-
           - target: "Ubuntu"
             platform: "linux"
             output-format: "system"
             runs-on: "ubuntu-latest"
-            briefcase-args: "--target ubuntu:24.04"
-
-          - target: "Fedora"
-            platform: "linux"
-            output-format: "system"
-            runs-on: "ubuntu-latest"
-            briefcase-args: "--target fedora:40"
-
-          - target: "Opensuse"
-            platform: "linux"
-            output-format: "system"
-            runs-on: "ubuntu-latest"
-            briefcase-args: "--target opensuse/tumbleweed"
+            briefcase-args: "--target ubuntu:24.04"          
 
           - target: "Windows"
             platform: "windows"
             output-format: "app"
             runs-on: "windows-latest"
-
-          - target: "MacOs"
-            platform: "macos"
-            output-format: "app"
-            runs-on: "macos-latest"
 
     steps:
       - name: Checkout
@@ -76,10 +43,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-
-      - name: Install flatpak
-        if: matrix.target == 'Flatpak'
-        run: sudo apt install flatpak flatpak-builder
 
       - name: Install Briefcase
         run: |
