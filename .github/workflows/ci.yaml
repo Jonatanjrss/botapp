@@ -32,7 +32,7 @@ jobs:
 
           - target: "Android"
             platform: "android"
-            output-format: "apk"
+            output-format: "gradle"
             runs-on: "ubuntu-latest"
             briefcase-args: "--target android"
 
@@ -89,4 +89,3 @@ jobs:
             dist/*
 
 
-            
