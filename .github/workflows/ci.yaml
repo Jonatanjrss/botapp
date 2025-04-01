@@ -35,7 +35,7 @@ jobs:
             output-format: "gradle"
             runs-on: "ubuntu-latest"
             briefcase-build: "briefcase build android"
-            briefcase-package: "briefcase package android"
+            briefcase-package: "briefcase package android -p apk"
 
     steps:
       - name: Checkout
